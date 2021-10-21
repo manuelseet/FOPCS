@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace FOPCS_Revision
 {
-    class Exercise01
+    class ExerciseB
     {
-        static void Main(string[] arg)
-        {
-
-        }
     }
 }
