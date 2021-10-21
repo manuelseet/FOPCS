@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FOPCS_Revision.ExerciseA</StartupObject>
+    <StartupObject>FOPCS_Revision.ExerciseB</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
