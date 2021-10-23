@@ -10,13 +10,13 @@ namespace FOPCS_Revision
     {
         static void Main(string[] arg)
         {
-            /*
+            
             //1 a and b
             Console.Write("Please enter your string: ");
             string uPhrase = Console.ReadLine();
             Console.WriteLine($"There are {VowelCounter(uPhrase)} vowels in the phrase \"{uPhrase}\"");
             IndividualVowelCounter(uPhrase);
-            */
+            
 
             //2
             Console.Write("Please enter your phrase: ");
