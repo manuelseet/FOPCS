@@ -10,7 +10,7 @@ namespace FOPCS_Revision
     {
         static void Main(string[] arg)
         {
-            
+            /*
             //1 a and b
             Console.Write("Please enter your string: ");
             string uPhrase = Console.ReadLine();
@@ -33,12 +33,132 @@ namespace FOPCS_Revision
             Console.WriteLine(titlePhrase);
 
 
+            //5
+            string[] names = new string[] { "John", "Venkat", "Mary", "Victor", "Betty" };
+            int[] marks = new int[] { 63, 29, 75, 82, 55 };
+            PrintStudentReports(names, marks);
+
+            */
+            //6
+            Console.WriteLine(CheckMatricNumber("A56742A"));
+            Console.WriteLine(CheckMatricNumber("A56742S"));
+
             //bonus
             char[] letters = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-            if (letters.Any(uPhrase2.Contains))
+            //if (letters.Any(uPhrase2.Contains))
             {
-                Console.WriteLine("yes");
+                //Console.WriteLine("yes");
             }
+        }
+
+        public static string CheckMatricNumber(string matric)
+        {
+            if (matric.Length != 7)
+                return "Invalid";
+            else
+            {
+                matric = matric.ToUpper();
+            }
+
+            char[] letters = "OPQRS".ToCharArray();
+            if ( matric[0] != 'A' && (!letters.Any(matric[6].ToString().Contains)))
+            {
+                return "Invalid";
+            }
+
+            int checksum = 0;
+
+            for(int i = 1; i <= 5; i++)
+            {
+                try
+                {
+                    checksum += Convert.ToInt32(matric[i]) * (7 - i);
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Does not contain number in the {0} position!", i);
+                    return "Invalid";
+                }
+                
+            }
+
+            checksum = checksum % 5;
+            if (matric[6] != letters[checksum])
+                return "Invalid";
+            else 
+                return "Valid";
+
+        }
+
+        public static void PrintStudentReports(string[] names, int[] marks)
+        {
+            if (names.Length != marks.Length)
+            {
+                throw new ApplicationException("the two arrays are not of equal length!");
+            }
+
+            //Marks sorting
+            int[] sortedMarks = ExerciseG.BubbleSort(marks);
+
+            string[] namesByMarks = new string[names.Length];
+            for(int i = 0; i< names.Length; i++)
+            {
+                int ind = Array.IndexOf(sortedMarks, marks[i]);
+                namesByMarks[i] = names[ind];
+            }
+
+            Console.WriteLine("Student Report , ranked by Marks");
+            Console.WriteLine("Student Name \t\t Marks");
+            for(int j = 0; j< namesByMarks.Length; j++)
+            {
+                Console.WriteLine($"{namesByMarks[j]} \t\t {sortedMarks[j]} ");
+
+            }
+
+            //Marks sorting
+            string[] sortedNames = BubbleSortString(names);
+
+            int[] marksByNames = new int[names.Length];
+            for (int i = 0; i < names.Length; i++)
+            {
+                int ind = Array.IndexOf(sortedNames, names[i]);
+                marksByNames[i] = marks[ind];
+            }
+
+            Console.WriteLine("Student Report , ranked by Name");
+            Console.WriteLine("Student Name \t\t Marks");
+            for (int j = 0; j < namesByMarks.Length; j++)
+            {
+                Console.WriteLine($"{sortedNames[j]} \t\t {marksByNames[j]} ");
+
+            }
+
+        }
+
+        public static string[] BubbleSortString(string[] nums)
+        {
+            //printArr(nums);
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                for (int j = 1; j < nums.Length - i; j++)
+                {
+                    if (nums[i].CompareTo(nums[j + i])==1)
+                    {
+                        string temp = nums[i];
+                        nums[i] = nums[j + i];
+                        nums[j + i] = temp;
+
+                        //printArr(nums);
+
+                    }
+                }
+
+            }
+
+            //printArr(nums);
+            return nums;
+
         }
 
         public static string ConvertToTitleCase(string phrase)

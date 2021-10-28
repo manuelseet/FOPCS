@@ -88,9 +88,9 @@ namespace FOPCS_Revision
 
         
 
-        public static void BubbleSort(int[] nums)
+        public static int[] BubbleSort(int[] nums)
         {
-            printArr(nums);
+            //printArr(nums);
             for(int i = 0; i < nums.Length-1; i++)
             {
                 for (int j = 1; j < nums.Length - i; j++)
@@ -101,14 +101,15 @@ namespace FOPCS_Revision
                         nums[i] = nums[j+i];
                         nums[j+i] = temp;
 
-                        printArr(nums);
+                        //printArr(nums);
 
                     }
                 }
 
             }
 
-            printArr(nums);
+            //printArr(nums);
+            return nums;
 
         }
 
